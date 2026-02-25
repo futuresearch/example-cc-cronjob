@@ -1,0 +1,26 @@
+namespace: default
+
+image:
+  repository: <your-registry>/claudie
+  tag: latest
+  pullPolicy: Always
+
+secretName: claudie-secrets
+
+defaults:
+  backoffLimit: 1
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  activeDeadlineSeconds: 7200  # 2 hours
+  resources:
+    limits:
+      cpu: 2
+      memory: 4Gi
+    requests:
+      cpu: 100m
+      memory: 512Mi
+
+jobs:
+  - name: add-numbers
+    skillName: add-numbers
+    schedule: "0 8 * * 1-5"  # Weekdays at 8am UTC

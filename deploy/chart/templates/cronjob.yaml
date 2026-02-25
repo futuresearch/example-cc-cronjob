@@ -1,0 +1,36 @@
+{{- range .Values.jobs }}
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: claudie-{{ .name }}
+  namespace: {{ $.Values.namespace }}
+spec:
+  schedule: {{ .schedule | quote }}
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: {{ .successfulJobsHistoryLimit | default $.Values.defaults.successfulJobsHistoryLimit }}
+  failedJobsHistoryLimit: {{ .failedJobsHistoryLimit | default $.Values.defaults.failedJobsHistoryLimit }}
+  jobTemplate:
+    spec:
+      backoffLimit: {{ .backoffLimit | default $.Values.defaults.backoffLimit }}
+      activeDeadlineSeconds: {{ .activeDeadlineSeconds | default $.Values.defaults.activeDeadlineSeconds }}
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: claudie
+              image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
+              imagePullPolicy: {{ $.Values.image.pullPolicy }}
+              env:
+                - name: SKILL_NAME
+                  value: {{ .skillName | quote }}
+              envFrom:
+                - secretRef:
+                    name: {{ $.Values.secretName }}
+              resources:
+                {{- if .resources }}
+                {{- toYaml .resources | nindent 16 }}
+                {{- else }}
+                {{- toYaml $.Values.defaults.resources | nindent 16 }}
+                {{- end }}
+{{- end }}
