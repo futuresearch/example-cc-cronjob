@@ -7,7 +7,8 @@ This repo accompanies the blog series: **Running Claude Code as a Production Run
 ## What's Here
 
 ```
-.claude/skills/add-numbers/SKILL.md   # Example skill: computes 2 + 3
+.claude/skills/add-numbers/SKILL.md   # Example skill: computes 2 + 3, commits result, creates PR
+lib/add_numbers.py                     # Python utility called by the skill
 Dockerfile                             # Multi-stage build with Python + Node + Claude CLI
 deploy/
   entrypoint.sh                        # Runs Claude Code with jq log filtering + timeout safety net
@@ -30,7 +31,12 @@ docker build -t claudie:latest .
 ### 2. Test locally
 
 ```bash
-docker run -e ANTHROPIC_API_KEY="sk-..." -e SKILL_NAME="add-numbers" claudie:latest
+docker run \
+  -e ANTHROPIC_API_KEY="sk-..." \
+  -e SKILL_NAME="add-numbers" \
+  -e SSH_PRIVATE_KEY="$(cat ~/.ssh/id_ed25519)" \
+  -e GH_TOKEN="ghp_..." \
+  claudie:latest
 ```
 
 ### 3. Deploy to Kubernetes
@@ -38,9 +44,11 @@ docker run -e ANTHROPIC_API_KEY="sk-..." -e SKILL_NAME="add-numbers" claudie:lat
 **Option A: Plain CronJob**
 
 ```bash
-# Create the secret
+# Create the secret (API key, SSH deploy key, GitHub token)
 kubectl create secret generic claudie-secrets \
-  --from-literal=ANTHROPIC_API_KEY="sk-..."
+  --from-literal=ANTHROPIC_API_KEY="sk-..." \
+  --from-literal=SSH_PRIVATE_KEY="$(cat ~/.ssh/deploy_key)" \
+  --from-literal=GH_TOKEN="ghp_..."
 
 # Apply the CronJob
 kubectl apply -f deploy/cronjob.yaml

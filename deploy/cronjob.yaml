@@ -18,11 +18,9 @@ spec:
               env:
                 - name: SKILL_NAME
                   value: "add-numbers"
-                - name: ANTHROPIC_API_KEY
-                  valueFrom:
-                    secretKeyRef:
-                      name: claudie-secrets
-                      key: ANTHROPIC_API_KEY
+              envFrom:
+                - secretRef:
+                    name: claudie-secrets
               resources:
                 requests:
                   cpu: 100m
