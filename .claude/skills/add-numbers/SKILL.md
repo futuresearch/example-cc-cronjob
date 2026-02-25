@@ -1,14 +1,14 @@
 ---
 name: add-numbers
-description: A minimal example skill that adds two numbers.
+description: A minimal example skill that adds two numbers using a Python library.
 ---
 
 # Add Numbers
 
-Compute 2 + 3 and report the result.
+Use the Python utility in `lib/add_numbers.py` to compute 2 + 3.
 
 ## Steps
 
-1. Calculate the sum of 2 and 3.
-2. Write the result to `output/result.txt` in the format: `The answer is: 5`
+1. Run `python -m lib.add_numbers 2 3` and capture the JSON output.
+2. Parse the result and write it to `output/result.txt`.
 3. Print the result to confirm.
