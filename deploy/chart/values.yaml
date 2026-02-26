@@ -28,3 +28,11 @@ jobs:
   - name: community-scanner
     skillName: community-scanner
     schedule: "0 9 * * 1-5"  # Weekdays at 9am UTC
+
+  - name: seo-pipeline
+    skillName: seo-pipeline
+    schedule: "0 10 * * 1,3,5"  # Mon/Wed/Fri at 10am UTC
+
+  - name: daily-news-content
+    skillName: daily-news-content
+    schedule: "0 14 * * 1-5"  # Weekdays at 2pm UTC
