@@ -6,18 +6,37 @@ This repo accompanies the blog series: **Running Claude Code as a Production Run
 
 ## What's Here
 
+Two example skills that share the same Dockerfile, entrypoint, and Helm chart:
+
+### 1. `add-numbers` — Hello World
+
+A trivial skill that computes 2 + 3, writes the result to a file, and creates a PR. Demonstrates the basic pattern: Python does mechanics, Claude does orchestration.
+
+### 2. `community-scanner` — Real-World Example
+
+A simplified version of the community scanning pipeline from [Post 3](https://everyrow.io/blog/marketing-pipeline-using-claude-code). Scans a few subreddits for people with data problems, classifies opportunities with a 5-question rubric, and creates a PR with a report.
+
+This demonstrates the production pattern at small scale: Python fetches posts, Claude reads them and decides which ones matter.
+
 ```
-.claude/skills/add-numbers/SKILL.md   # Example skill: computes 2 + 3, commits result, creates PR
-lib/add_numbers.py                     # Python utility called by the skill
-Dockerfile                             # Multi-stage build with Python + Node + Claude CLI
+.claude/
+  skills/
+    add-numbers/SKILL.md          # Trivial example: compute and PR
+    community-scanner/SKILL.md    # Scan Reddit, classify, report, PR
+  agents/
+    classifier.md                 # Structured classification agent
+lib/
+  add_numbers.py                  # Python utility for add-numbers
+  scanner.py                      # Reddit JSON API fetcher
+Dockerfile                        # Multi-stage build with Python + Node + Claude CLI
 deploy/
-  entrypoint.sh                        # Runs Claude Code with jq log filtering + timeout safety net
-  cronjob.yaml                         # Standalone K8s CronJob manifest
-  chart/                               # Helm chart (for managing multiple skills)
+  entrypoint.sh                   # Runs Claude Code with jq log filtering + timeout safety net
+  cronjob.yaml                    # Standalone K8s CronJob manifest
+  chart/                          # Helm chart (for managing multiple skills)
     Chart.yaml
     values.yaml
     templates/cronjob.yaml
-pyproject.toml                         # Python project (add your dependencies here)
+pyproject.toml                    # Python project (add your dependencies here)
 ```
 
 ## Quick Start
@@ -30,10 +49,23 @@ docker build -t claudie:latest .
 
 ### 2. Test locally
 
+**Add numbers (hello world):**
+
 ```bash
 docker run \
   -e ANTHROPIC_API_KEY="sk-..." \
   -e SKILL_NAME="add-numbers" \
+  -e SSH_PRIVATE_KEY="$(cat ~/.ssh/id_ed25519)" \
+  -e GH_TOKEN="ghp_..." \
+  claudie:latest
+```
+
+**Community scanner:**
+
+```bash
+docker run \
+  -e ANTHROPIC_API_KEY="sk-..." \
+  -e SKILL_NAME="community-scanner" \
   -e SSH_PRIVATE_KEY="$(cat ~/.ssh/id_ed25519)" \
   -e GH_TOKEN="ghp_..." \
   claudie:latest
@@ -74,6 +106,16 @@ jobs:
     skillName: my-skill
     schedule: "0 9 * * 1-5"
 ```
+
+## Customizing the Community Scanner
+
+Edit `.claude/skills/community-scanner/SKILL.md` to change:
+
+- **Which subreddits to scan** — replace the list in the Configuration section
+- **Classification criteria** — adjust the questions in Phase 2 to match what you're looking for
+- **Report format** — modify Phase 3 to include whatever you need
+
+The `lib/scanner.py` fetches posts using Reddit's public JSON API (no authentication needed). For other platforms, you'd add similar fetchers - the pattern is the same: Python handles the API mechanics, Claude handles the judgment.
 
 ## Key Details
 

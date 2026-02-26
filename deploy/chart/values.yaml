@@ -24,3 +24,7 @@ jobs:
   - name: add-numbers
     skillName: add-numbers
     schedule: "0 8 * * 1-5"  # Weekdays at 8am UTC
+
+  - name: community-scanner
+    skillName: community-scanner
+    schedule: "0 9 * * 1-5"  # Weekdays at 9am UTC
