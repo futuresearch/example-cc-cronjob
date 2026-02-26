@@ -22,12 +22,13 @@ This demonstrates the production pattern at small scale: Python fetches posts, C
 .claude/
   skills/
     add-numbers/SKILL.md          # Trivial example: compute and PR
-    community-scanner/SKILL.md    # Scan Reddit, classify, report, PR
+    community-scanner/SKILL.md    # Scan → Classify → Propose → Report → PR
   agents/
-    classifier.md                 # Structured classification agent
+    classifier.md                 # 13-question rubric, 1-5 scoring
+    proposer.md                   # Strategy selection, draft forum responses
 lib/
   add_numbers.py                  # Python utility for add-numbers
-  scanner.py                      # Reddit JSON API fetcher
+  scanner.py                      # Reddit JSON API fetcher (with optional comment enrichment)
 Dockerfile                        # Multi-stage build with Python + Node + Claude CLI
 deploy/
   entrypoint.sh                   # Runs Claude Code with jq log filtering + timeout safety net
