@@ -1,0 +1,12 @@
+{
+  "candidate_index": 0,
+  "headline": "Say goodbye to free ChatGPT with no ads",
+  "source_url": "https://en.wikipedia.org/wiki/List_of_chatbots",
+  "source_name": "Wikipedia: List of chatbots",
+  "entity_type": "AI chatbots",
+  "rows_total": 35,
+  "rows_selected": 10,
+  "columns": ["Chatbot", "Developer", "Released"],
+  "csv_path": "data/news-content/example/datasets/candidate-0/dataset.csv",
+  "notes": "Downloaded 35-entry Wikipedia chatbot list. Filtered to 10 major consumer AI assistants with confirmed release dates."
+}

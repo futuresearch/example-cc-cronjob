@@ -199,6 +199,17 @@ The pipeline uses an MCP server ([mcp-server-gsc](https://github.com/AminForou/m
 
 The `blog-lead-scoring.json` example is the most instructive: removing a competitor name from the title caused related queries to disappear entirely. The next run read the `experiment_history`, identified the regression, and proposed reverting. That feedback loop is the core of the pipeline.
 
+## Daily News Content Pipeline: Example Data
+
+`data/news-content/example/` contains the ChatGPT ads story end-to-end - the real output that produced the Copilot/Siri finding:
+
+- `candidates.json` — news-finder output: the headline, data angle, and viability score
+- `datasets/candidate-0.json` — dataset metadata (Wikipedia chatbot list, 35 rows, 10 selected)
+- `datasets/candidate-0/dataset.csv` — the actual CSV: chatbot names, developers, release dates
+- `sdk-results/candidate-0.json` — the full sdk-runner output: operation choice, task prompt crafted, results preview, self-evaluation (5/5 on all criteria), suggested headline
+
+The evaluation shows why this story worked: 582x spread between fastest (Copilot, 9 days) and slowest (Siri, 5,242 days) to introduce ads. Discrimination that wide is rare - most rank results cluster within a 2-3x range.
+
 ## Customizing the Daily News Content Pipeline
 
 Edit `.claude/skills/daily-news-content/SKILL.md` to change:

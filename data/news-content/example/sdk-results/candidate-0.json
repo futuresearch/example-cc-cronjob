@@ -1,0 +1,45 @@
+{
+  "candidate_index": 0,
+  "headline": "Say goodbye to free ChatGPT with no ads",
+  "original_url": "https://www.axios.com/2026/02/09/chatgpt-ads-testing",
+  "skipped": false,
+  "operation": "rank",
+  "task_prompt": "Research how many days this AI chatbot remained completely ad-free from its initial public launch date until it first introduced advertisements or sponsored content. If still ad-free as of February 10, 2026, count the days from launch to today and note it is still ad-free.",
+  "session_url": "https://everyrow.io/sessions/5c88d3a3-9439-419e-8c90-0a9aef3533d0",
+  "dataset": {
+    "csv_path": "data/news-content/example/datasets/candidate-0/dataset.csv",
+    "source_url": "https://en.wikipedia.org/wiki/List_of_chatbots",
+    "source_name": "Wikipedia: List of chatbots",
+    "rows_total": 35,
+    "rows_processed": 10,
+    "columns_used": ["Chatbot", "Developer", "Released"]
+  },
+  "output": {
+    "rows_returned": 10,
+    "results_path": "data/news-content/example/sdk-results/candidate-0.csv",
+    "results_preview": [
+      {"Chatbot": "Siri", "days_ad_free": 5242, "notes": "Still ad-free as of Feb 2026, 14+ years"},
+      {"Chatbot": "ChatGPT", "days_ad_free": 1166, "notes": "Introduced ads Feb 2026, 3.2 years after launch"},
+      {"Chatbot": "Claude", "days_ad_free": 1064, "notes": "Still ad-free as of Feb 2026"},
+      {"Chatbot": "Perplexity", "days_ad_free": 706, "notes": "Introduced sponsored answers in late 2024"},
+      {"Chatbot": "Grok", "days_ad_free": 642, "notes": "Premium-only model, no free ad tier"},
+      {"Chatbot": "Gemini", "days_ad_free": 453, "notes": "Integrated into Google ad ecosystem"},
+      {"Chatbot": "Copilot", "days_ad_free": 9, "notes": "Microsoft introduced ads 9 days after launch"}
+    ]
+  },
+  "evaluation": {
+    "discrimination": 5,
+    "surprise": 5,
+    "clarity": 5,
+    "timeliness": 5,
+    "overall": 5,
+    "post_worthy": true,
+    "key_findings": [
+      "Microsoft Copilot lasted only 9 days ad-free",
+      "Siri has been ad-free for 5,242 days (14+ years)",
+      "The spread is 9 to 5,242 days - a 582x difference between fastest and slowest to monetize"
+    ],
+    "suggested_headline": "How Long Can an AI Chatbot Resist Ads? Copilot Lasted 9 Days. Siri Is Going on 14 Years.",
+    "reasoning": "Perfect discrimination (582x spread), deeply timely (ChatGPT just launched ads), Copilot finding is genuinely shocking. The non-profit-turned-for-profit-turned-ad-platform framing makes the news subject the punchline."
+  }
+}
