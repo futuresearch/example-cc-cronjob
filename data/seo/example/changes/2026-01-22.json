@@ -1,0 +1,48 @@
+{
+  "recorded_at": "2026-01-22T11:34:07Z",
+  "run_id": "run-2026-01-22",
+  "changes": [
+    {
+      "slug": "blog-dedup-guide",
+      "field": "title",
+      "old_value": "Deduplication Guide: Removing Duplicate Records from Your Data",
+      "new_value": "How to Deduplicate CSV Data with Fuzzy Matching",
+      "reasoning": "Top query 'how to deduplicate csv' has 210 impressions at position 7.1 but only 2 clicks. Current title doesn't include 'csv' or 'fuzzy matching', which are the terms searchers use. Previous title change improved position from 12 to 8 - same pattern of front-loading the query term should improve CTR further.",
+      "data_at_change": {
+        "clicks": 4,
+        "impressions": 580,
+        "ctr": 0.007,
+        "position": 8.4
+      },
+      "confidence": "medium"
+    },
+    {
+      "slug": "blog-lead-scoring",
+      "field": "title",
+      "old_value": "How to Score Leads Without a CRM",
+      "new_value": "AI Lead Scoring Without Clay: Rank 500 Prospects for $28",
+      "reasoning": "Last title change (2025-12-28) was a regression: removing 'Clay' from the title caused clay-related queries to disappear entirely - 39 impressions and 3 clicks lost. Reverting to the previous title format and adding specific numbers (500 prospects, $28) to improve CTR.",
+      "data_at_change": {
+        "clicks": 0,
+        "impressions": 34,
+        "ctr": 0.0,
+        "position": 9.2
+      },
+      "confidence": "high"
+    },
+    {
+      "slug": "docs-getting-started",
+      "field": "title",
+      "old_value": "Getting Started",
+      "new_value": "Getting Started: Install and Run Your First Deduplication",
+      "reasoning": "Cold-start page with zero impressions. Current title 'Getting Started' is too generic to rank for anything. Adding the specific task (install + first run) and the product outcome (deduplication) gives the page a fighting chance for intent-matched queries.",
+      "data_at_change": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0.0,
+        "position": null
+      },
+      "confidence": "low"
+    }
+  ]
+}

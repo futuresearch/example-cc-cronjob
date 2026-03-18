@@ -1,0 +1,84 @@
+{
+  "slug": "blog-dedup-guide",
+  "url": "https://example.com/blog-dedup-guide/",
+  "category": "blog",
+  "current_metadata": {
+    "title": "Deduplication Guide: Removing Duplicate Records from Your Data",
+    "description": "Learn how to identify and remove duplicate records from your datasets using modern tools."
+  },
+  "gsc_current": {
+    "date_range": { "start": "2026-01-16", "end": "2026-01-22" },
+    "clicks": 4,
+    "impressions": 580,
+    "ctr": 0.007,
+    "position": 8.4,
+    "in_gsc": true,
+    "queries": [
+      { "query": "how to deduplicate csv", "impressions": 210, "clicks": 2, "ctr": 0.01, "position": 7.1 },
+      { "query": "remove duplicate rows python", "impressions": 145, "clicks": 1, "ctr": 0.007, "position": 9.2 },
+      { "query": "deduplication tutorial", "impressions": 98, "clicks": 1, "ctr": 0.01, "position": 8.8 },
+      { "query": "fuzzy dedup pandas", "impressions": 72, "clicks": 0, "ctr": 0.0, "position": 11.3 },
+      { "query": "deduplicate company names", "impressions": 55, "clicks": 0, "ctr": 0.0, "position": 14.7 }
+    ]
+  },
+  "gsc_previous": {
+    "clicks": 3,
+    "impressions": 510,
+    "ctr": 0.006,
+    "position": 9.1
+  },
+  "gsc_diff": {
+    "clicks_delta": 1,
+    "impressions_delta": 70,
+    "ctr_delta": 0.001,
+    "position_delta": 0.7,
+    "queries_gained": [
+      { "query": "fuzzy dedup pandas", "impressions": 72, "clicks": 0, "ctr": 0.0, "position": 11.3 }
+    ],
+    "queries_lost": [
+      { "query": "data cleaning duplicates", "impressions": 44, "clicks": 0, "ctr": 0.0, "position": 12.1 }
+    ]
+  },
+  "experiment_history": [
+    {
+      "experiment_date": "2025-11-20",
+      "days_since": 63,
+      "change_type": "title",
+      "old_value": "A Guide to Data Deduplication",
+      "new_value": "Deduplication Guide: Removing Duplicate Records from Your Data",
+      "data_before": {
+        "clicks": 1,
+        "impressions": 180,
+        "ctr": 0.006,
+        "position": 12.3
+      },
+      "data_after": {
+        "clicks": 4,
+        "impressions": 580,
+        "ctr": 0.007,
+        "position": 8.4
+      },
+      "outcome": "improved"
+    },
+    {
+      "experiment_date": "2025-10-05",
+      "days_since": 109,
+      "change_type": "description",
+      "old_value": "A comprehensive overview of data deduplication strategies.",
+      "new_value": "Learn how to identify and remove duplicate records from your datasets using modern tools.",
+      "data_before": {
+        "clicks": 0,
+        "impressions": 95,
+        "ctr": 0.0,
+        "position": 15.7
+      },
+      "data_after": {
+        "clicks": 1,
+        "impressions": 180,
+        "ctr": 0.006,
+        "position": 12.3
+      },
+      "outcome": "improved"
+    }
+  ]
+}

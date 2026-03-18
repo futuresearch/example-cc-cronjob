@@ -20,7 +20,7 @@ This demonstrates the production pattern at small scale: Python fetches posts, C
 
 ### 3. `seo-pipeline` — SEO Optimization
 
-A simplified version of the SEO optimization pipeline from [Post 4](https://everyrow.io/blog/llm-agents-seo-pipeline). Collects Google Search Console data via MCP, analyzes every page with an LLM agent, and proposes title/description improvements as a PR.
+A simplified version of the SEO optimization pipeline from [Post 4](https://futuresearch.ai/blog/self-optimizing-seo-pipeline). Collects Google Search Console data via MCP, analyzes every page with an LLM agent, and proposes title/description improvements as a PR.
 
 This demonstrates the feedback loop pattern: each run measures the outcome of previous experiments (did that title change improve CTR?), and the analyzer uses that history to make better suggestions over time.
 
@@ -189,6 +189,15 @@ Edit `lib/seo_prepare.py` to change:
 - **`PAGE_CATEGORIES`** — map slugs to categories (blog, docs, landing) for the analyzer
 
 The pipeline uses an MCP server ([mcp-server-gsc](https://github.com/AminForou/mcp-gsc)) to fetch Search Console data. You'll need a Google Cloud service account with Search Console API access.
+
+`data/seo/example/` contains three annotated sample files showing what the pipeline produces:
+
+- `pages/blog-dedup-guide.json` — a page with two rounds of experiment history, both improved
+- `pages/blog-lead-scoring.json` — a page where a title change regressed (the history catches it and proposes a revert)
+- `pages/docs-getting-started.json` — a cold-start page with zero impressions
+- `changes/2026-01-22.json` — the proposals the analyzer wrote for those three pages, with reasoning
+
+The `blog-lead-scoring.json` example is the most instructive: removing a competitor name from the title caused related queries to disappear entirely. The next run read the `experiment_history`, identified the regression, and proposed reverting. That feedback loop is the core of the pipeline.
 
 ## Customizing the Daily News Content Pipeline
 

@@ -1,0 +1,61 @@
+{
+  "slug": "blog-lead-scoring",
+  "url": "https://example.com/blog-lead-scoring/",
+  "category": "blog",
+  "current_metadata": {
+    "title": "How to Score Leads Without a CRM",
+    "description": "Score and prioritize leads from a spreadsheet using AI, even when your data is incomplete."
+  },
+  "gsc_current": {
+    "date_range": { "start": "2026-01-16", "end": "2026-01-22" },
+    "clicks": 0,
+    "impressions": 34,
+    "ctr": 0.0,
+    "position": 9.2,
+    "in_gsc": true,
+    "queries": [
+      { "query": "lead scoring without salesforce", "impressions": 18, "clicks": 0, "ctr": 0.0, "position": 8.1 },
+      { "query": "ai lead scoring spreadsheet", "impressions": 10, "clicks": 0, "ctr": 0.0, "position": 11.4 },
+      { "query": "score leads from csv", "impressions": 6, "clicks": 0, "ctr": 0.0, "position": 9.7 }
+    ]
+  },
+  "gsc_previous": {
+    "clicks": 3,
+    "impressions": 89,
+    "ctr": 0.034,
+    "position": 7.8
+  },
+  "gsc_diff": {
+    "clicks_delta": -3,
+    "impressions_delta": -55,
+    "ctr_delta": -0.034,
+    "position_delta": -1.4,
+    "queries_gained": [],
+    "queries_lost": [
+      { "query": "clay lead scoring alternative", "impressions": 39, "clicks": 3, "ctr": 0.077, "position": 5.2 },
+      { "query": "clay.com competitor", "impressions": 12, "clicks": 0, "ctr": 0.0, "position": 8.9 }
+    ]
+  },
+  "experiment_history": [
+    {
+      "experiment_date": "2025-12-28",
+      "days_since": 25,
+      "change_type": "title",
+      "old_value": "AI Lead Scoring Without Clay: Rank 500 Prospects for $28",
+      "new_value": "How to Score Leads Without a CRM",
+      "data_before": {
+        "clicks": 3,
+        "impressions": 89,
+        "ctr": 0.034,
+        "position": 7.8
+      },
+      "data_after": {
+        "clicks": 0,
+        "impressions": 34,
+        "ctr": 0.0,
+        "position": 9.2
+      },
+      "outcome": "regressed"
+    }
+  ]
+}
