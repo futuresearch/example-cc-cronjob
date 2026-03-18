@@ -1,0 +1,21 @@
+{
+  "slug": "docs-getting-started",
+  "url": "https://example.com/docs-getting-started/",
+  "category": "docs",
+  "current_metadata": {
+    "title": "Getting Started",
+    "description": ""
+  },
+  "gsc_current": {
+    "date_range": { "start": "2026-01-16", "end": "2026-01-22" },
+    "clicks": 0,
+    "impressions": 0,
+    "ctr": 0.0,
+    "position": null,
+    "in_gsc": false,
+    "queries": []
+  },
+  "gsc_previous": null,
+  "gsc_diff": null,
+  "experiment_history": []
+}
